@@ -142,7 +142,7 @@ body {
 .box2 span {
     font-size: 80px;
     color: #6eb666;
-    font-family: "Londrina Shadow", sans-serif;
+    font-family: "Bebas Neue", sans-serif;
 }
 
 .box3 {
@@ -164,7 +164,7 @@ body {
     padding-top: 30px;
 }
 .texto span {
-    font-family:"Londrina Shadow", sans-serif;
+    font-family: "Bebas Neue", sans-serif;
     font-size: 80px;
     color: #8fb890 ;
 }
@@ -183,4 +183,63 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+/*fim info */
+
+/*começo valores */
+.valores {
+    background-image: url(../assets/img/background_valores.png);
+    background-size: cover;
+    height: 51em ;
+}
+.valores .container {
+    display: flex;
+    justify-content: center ;
+    align-self: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+.container .coluna1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 0px 30px;
+}
+.coluna1 h1 {
+    font-family: "Bebas Neue", sans-serif;
+    color:#148937;
+    font-size: 110px;
+    margin-bottom: 10px;
+}
+.coluna1 p {
+    color: #148937;
+    font-size: 25px;
+    font-style: normal;
+}
+.coluna1 .numero {
+    font-family: "Bebas Neue", sans-serif;
+    color:#148937;
+    font-size: 43px;
+}
+.coluna1 .grifado {
+    background-color: #cbe7c7;
+    background-size: 25px;
+}
+
+.container .coluna2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 50%;
+}
+
+.coluna2 img {
+    margin-top: 100px;
+    width: 500px;
+    height: 700px;   
 }
