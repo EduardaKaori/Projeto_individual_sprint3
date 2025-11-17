@@ -14,6 +14,19 @@ body {
     color: white;
     width: 600px; 
 }
+.navbar button {
+    list-style: none;
+    background-color:#f4f4f4;
+    border-color: #51a440;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+.navbar button:hover{
+    cursor: pointer;
+    background-color: #148937;
+    transition: 0.2s ease-in-out;
+    color: #FFFFFF;
+}
 .navbar .btn-navbar:hover{
     color: #f4a5bb;
     cursor: pointer;
@@ -190,13 +203,13 @@ body {
 .valores {
     background-image: url(../assets/img/background_valores.png);
     background-size: cover;
-    height: 51em ;
+    height: 40em ;
 }
 .valores .container {
     display: flex;
     justify-content: center ;
-    align-self: center;
-    align-items: flex-start;
+    align-self: flex-start;
+    align-items: center ;
     width: 100%;
     height: 100%;
     flex-direction: row;
@@ -206,24 +219,25 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    padding: 0px 30px;
+    width: 40%;
+    padding: 10px 50px;
 }
-.coluna1 h1 {
+.coluna1 #span_valores {
     font-family: "Bebas Neue", sans-serif;
     color:#148937;
-    font-size: 110px;
-    margin-bottom: 10px;
+    font-size: 100px;
+    margin-bottom: 0px;
+    font-size: bold;
 }
 .coluna1 p {
     color: #148937;
-    font-size: 25px;
+    font-size: 23px;
     font-style: normal;
 }
 .coluna1 .numero {
     font-family: "Bebas Neue", sans-serif;
     color:#148937;
-    font-size: 43px;
+    font-size: 40px;
 }
 .coluna1 .grifado {
     background-color: #cbe7c7;
@@ -239,7 +253,223 @@ body {
 }
 
 .coluna2 img {
-    margin-top: 100px;
-    width: 500px;
-    height: 700px;   
+    margin-top: 50px;
+    width: 400px;
+    height: 500px;   
+}
+/*fim valores */
+
+/*começo evento*/
+.eventos_em_cartaz {
+    background-image: url(../assets/img/background_eventos.png);
+    background-size: cover;
+    height: 40em;
+}
+.eventos_em_cartaz .container{
+    display: flex;
+    justify-content: center ;
+    align-self: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+.eventos_em_cartaz #titulo {
+    font-family: "Bebas Neue", sans-serif;
+    color:#148937;
+    font-size: 100px;   
+    font-size: bold;
+}
+.boxer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.boxer img {
+    width: 180px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+.boxer .fundo_branco {
+    width: 180px;
+    height: 200px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box #subtitulo {
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+    color: white;
+    background-color: #f29ba9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+}
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.box p {
+    color: #148937;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+}
+.box span {
+    color: #148937;
+    font-size: 17px;
+}
+.box button {
+    list-style: none;
+    background-color:#51a440;
+    border-color: #51a440;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+.box a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-style: normal;
+    font-family: "Playfair Display", serif;
+}
+/*fim eventos */
+
+/*começo contato */
+.contato {
+    background-image: url(../assets/img/background_contato.png);
+    background-size: cover;
+    height: 40em;
+}
+.contato .container {
+    display: flex;
+    justify-content: center ;
+    align-self: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.mini_container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+.contato #titulo {
+    font-family: "Bebas Neue", sans-serif;
+    color:#148937;
+    font-size: 80px;   
+    font-size: bold;  
+}
+.contato p {
+    color:#148937;
+    font-size: 20px;   
+    font-size: bold;  
+}
+.contato img {
+    width: 360px;
+    height: 300px;
+}
+.img_logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-left: 50px;
+}
+.interesse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin-left: 50px;
+}
+#input_mensagem{
+    height: 200px;
+}
+
+#input_email, #input_mensagem{
+    background-color: white;
+    padding: 10px;
+    width: 60%;
+    border: none;
+    border-radius: 20px;
+}
+
+#input_email:focus, #input_mensagem:focus{
+    border: 5px solid #f29ba9;
+    outline: none;
+}
+
+#input_email::placeholder, #input_mensagem::placeholder{
+    font-size: 15px;
+}
+
+.interesse b{
+    color:#f29ba9 ;
+    font-size: 20px;
+}
+
+.enviar{
+    background-color: #f29ba9;
+    width: 20%;
+    border-radius: 20px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 900;
+    margin-left: 30%;
+    margin-top: 10px;
+}
+.enviar:hover{
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 1px 1px 5px #a89595;
+}
+/*fim contato */
+
+/*começo footer */
+.footer {
+  background-color: #f29ba9;
+  height: 120px;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+}
+
+.footer .container {
+  justify-content: center;
+  text-align: center;
+}
+
+.footer .container .version {
+  font-size: 12px;
+}
+
+.footer img {
+    width: 30px;
+    height: 30px;
 }

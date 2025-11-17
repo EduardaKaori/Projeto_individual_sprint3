@@ -34,10 +34,10 @@
                 </li>
                 <li>
                     <button id="cadastro" onclick="cadastro()"><a href="">Cadastre-se</a></button>
-                </li><!-- NÃO ESQUECER!! ao chamar a função -> console.log('clicou em cadastro')-->
+                </li>
                 <li>
                     <button id="login" onclick="login()"><a href="">Login</a></button>
-                </li> <!--Dúvida: todo botão precisa de uma função -->
+                </li> 
             </ul>
         </div>
     </div>
@@ -91,7 +91,7 @@
     <div class="valores">
         <div class="container">
             <div class="coluna1">
-                <h1>VALORES</h1>
+                <span id="span_valores">VALORES</span>
                 <p><span class="numero" >1.</span><span class="grifado">“Seinen não é um lugar, são as pessoas!”</span></p>
                 <p><span class="numero" >2.</span><span class="grifado">“Vamos aprender juntos e que seja errando!”</span></p>
                 <p><span class="numero" >3.</span><span class="grifado">Ichariba Choode - “uma vez que nos encontramos nos tornamos irmãos” </span></p>
@@ -103,7 +103,75 @@
             </div>
         </div>
     </div>
-
+    <div class="eventos_em_cartaz" id="eventos">
+        <div class="container">
+            <span id="titulo">EVENTOS</span>
+            <div class="boxer"> 
+                <div class="box">
+                    <span id="subtitulo">Halloween Party VA</span>
+                    <img src="assets/img/Logo_halloweenVA.png">
+                    <div class="fundo_branco">
+                        <span>Data: 26/10/25</span>
+                        <p>Halloween VA - é um evento que organizamos para os seinens se divertirem na época de halloween, a festas mais horripilante que existe</p>
+                    </div>
+                    <button onclick="clicar()"><a id="btn_clique" href="">Clique e veja Avaliações!</a></button>
+                </div>
+                <div class="box">
+                    <span id="subtitulo">IMA - Evento de <br>Integração</span>
+                    <img src="assets/img/Logo_IMA.png">
+                    <div class="fundo_branco">
+                        <span>Data: Abril 2026</span>
+                        <p>IMA é um evento de integração novo do seinen Vila Alpina, que tem como objetivo incentivar os jovens a se divertirem e criarem laços de amizade.</p>
+                    </div>
+                    <button onclick="clicar()"><a id="btn_clique" href="">Clique e veja Avaliações!</a></button>
+                </div>
+                <div class="box">
+                    <span id="subtitulo">HAM - Hamburguer <br> Alpinos Minigames </span>
+                    <img src="assets/img/Logo_HAM.png">
+                    <div class="fundo_branco">
+                        <span>Data: 30/03/25</span>
+                        <p>HAM é um evento onde você e seu amigo pode ir para comer alguns hamburgueres e se divertir jogando jogos de tabuleiro, que são disponibilizados no local</p>
+                    </div>
+                    <button onclick="clicar()"><a id="btn_clique" href="">Clique e veja Avaliações!</a></button>
+                </div>
+                <div class="box">
+                    <span id="subtitulo">Festival do Temaki</span>
+                    <img src="assets/img/logo_Festival_temaki.png">
+                    <div class="fundo_branco">
+                        <span>Data: 14/09/25</span>
+                        <p>Quer comer um delicioso temaki enquanto se diverte vendo apresentações da cultura de Okinawa e jogando bingo com prêmios inéditos? Venha para o Festival do Temaki II</p>
+                    </div>
+                    <button onclick="clicar()"><a id="btn_clique" href="">Clique e veja Avaliações!</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contato" id="contato">
+        <div class="container">
+            <span id="titulo">SE INTERESSOU?</span>
+            <p>Entre em contato com a gente e tire suas dúvidas!</p>
+                <div class="mini_container">
+                    <div class="imagem_logo">
+                        <img src="assets/icon/Logo_seinen_coala.png" >
+                    </div>
+                    <div class="interesse">
+                        <b class="email">Email:</b>
+                        <input type="text" id="input_email" placeholder="Seu melhor email vai aqui!">
+                        <b>Escreva sua Mensagem:</b>
+                        <textarea id="input_mensagem" placeholder="Fale um pouco sobre o que deseja...  (Min. 20 caracteres)"></textarea>
+                        <button class="enviar" onclick="enviar()">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <h4>Eduarda Kaori Nakandakari &hearts; Seinen Vila Alpina &copy; 2025</h4>
+            <span class="version">v1.0.0</span><br>
+            <a href="https://www.instagram.com/seinen_vilaalpina?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img  src="assets/icon/icons8-instagram-100.png"></a>
+        </div>
+    </div>
 
 </body>
 
