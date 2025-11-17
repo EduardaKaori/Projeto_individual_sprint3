@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 body {
     margin: 0;
     font-family: "Playfair Display", serif;
@@ -342,12 +345,25 @@ body {
     border-radius: 20px;
     margin-top: 5px;
 }
+.box button:hover{
+    cursor: pointer;
+    background-color: white;
+    transition: 0.2s ease-in-out;
+    color: #51a440 ;
+}
 .box a {
     color: white;
     text-decoration: none;
     font-size: 20px;
     font-style: normal;
     font-family: "Playfair Display", serif;
+}
+.box a:hover{
+    cursor: pointer;
+    background-color: white;
+    transition: 0.2s ease-in-out;
+    color: #51a440 ;
+      
 }
 /*fim eventos */
 
@@ -451,7 +467,7 @@ body {
 
 /*começo footer */
 .footer {
-  background-color: #f29ba9;
+  background-color: #d989a0;
   height: 120px;
   width: 100%;
   color: #fff;
