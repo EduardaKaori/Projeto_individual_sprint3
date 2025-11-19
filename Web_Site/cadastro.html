@@ -23,15 +23,6 @@
                 <li>
                     <a class="btn-navbar" href="index.html">Home</a>
                 </li>
-                <li>
-                    <a class="btn-navbar" href="index.html">Sobre nós</a>
-                </li>
-                <li>
-                    <a class="btn-navbar" href="index.html">Eventos</a>
-                </li>
-                <li>
-                    <a class="btn-navbar" href="index.html">Contato</a>
-                </li>
                 <li class="agora">
                     <button id="cadastro" onclick="cadastro()"><a href="#cadastro">Cadastre-se</a></button>
                 </li>
@@ -41,26 +32,7 @@
             </ul>
         </div>
     </div>
-  <!--header fim-->
-
-  <div class="login">
-    <div class="alerta_erro">
-      <div class="card_erro" id="cardErro">
-        <span id="mensagem_erro"></span>
-      </div>
-    </div>
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
-          <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
+    <div>
           <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
@@ -77,20 +49,11 @@
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
-          <div class="campo">
-            <span>CPF:</span>
-            <input id="cpf_input" type="text" placeholder="XXX.XXX.XXX-XX" />
-          </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div>
-
-        <div id="div_erros_login"></div>
+        <div id="mensagem"></div>
       </div>
     </div>
-  </div>
 
     <div class="footer">
         <div class="container">
