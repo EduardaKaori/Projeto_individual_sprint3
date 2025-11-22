@@ -217,7 +217,7 @@ body {
     height: 100%;
     flex-direction: row;
 }
-.container .coluna1 {
+.valores .container .coluna1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -247,7 +247,7 @@ body {
     background-size: 25px;
 }
 
-.container .coluna2 {
+.valores .container .coluna2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -445,6 +445,8 @@ body {
 .footer .container {
   justify-content: center;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer .container .version {
@@ -460,12 +462,13 @@ body {
 
 /*login*/
 .login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  height: 40em;
+  background-image: url('../assets/img/Wichee.jpg');
   background-size: cover;
 }
 
 .login .container {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -473,7 +476,7 @@ body {
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
+  background-color: rgba(0, 73, 35, 0.558);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -498,19 +501,20 @@ body {
 }
 
 .formulario span {
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 25px;
+  font-weight: 800px;
+  font-family:  "Bebas Neue", sans-serif;
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #f29ba9;
   text-align: center;
   border-radius: 10px;
   margin: 0;
 }
 
 .formulario select {
-  border: 2px solid #32b9cd;
+  border: 2px solid #f29ba9;
   background-color: white;
   color: gray;
   height: 36px;
@@ -541,16 +545,6 @@ body {
   margin-top: 20px;
 }
 
-.loading-div {
-  width: 50px;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
-
 #div_erros_login {
   display: none
 }
@@ -565,13 +559,14 @@ body {
 .card_erro {
   display: none;
   background-color: #fff;
-  color: black;
+  color:#148937;
   width: 230px;
   position: fixed;
   border-radius: 4px;
   border: #ED145B 3px solid;
   padding: 10px;
   margin-right: 10%;
+  font-family:  "Playfair Display", serif;
 }
 
 .card_erro #mensagem_erro{
@@ -611,13 +606,10 @@ input {
   margin-top: 5px;
 }
 
-.loading-div {
-  width: 50px;
-  margin: auto;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
+.formulario a{
+    color: #ED145B;
+    font-size: 21px;
+    font-style: normal;
+    font-family: "Playfair Display", serif;
+    margin-left: 170px;
 }

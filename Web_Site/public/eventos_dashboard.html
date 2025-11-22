@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Londrina+Shadow&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
     <div class="header_dash">
         <div class="container_dash">
             <div class="icone">
@@ -38,7 +38,7 @@
                     <a class="btn-navbar-dash" href="#festival_temaki">Festival do Temaki</a>
                 </li>
                 <li>
-                    <button id="voltar" onclick="voltar()"><a href="index.html">&#8592; Voltar</a></button>
+                    <button id="voltar" onclick="limparSessao()"><a href="index.html">&#8592; Voltar</a></button>
                 </li>
             </ul>
         </div>
@@ -128,21 +128,172 @@
                 </div>
             </div>
             <div class="avaliacao-mural">
-                <span id="avalie">AVALIE O EVENTO</span>
-                <div class="select-avaliacao">
-                    <select id="select_avaliacao">
-                        <option value="#">Avalie-nos</option>
-                        <option value="3">Ótimo</option>
-                        <option value="2">Bom</option>
-                        <option value="1">Ruim</option>
-                    </select>
+                    <span id="avalie">AVALIE O EVENTO</span>
+                       <div class="div-form">
+                           <form id="form_postagem" method="post" onsubmit="return publicar()">
+                               <label>
+                                   <div class="select-avaliacao">
+                                        <select id="select_avaliacao">
+                                            <option value="#">Avalie-nos</option>
+                                            <option value="3">Ótimo</option>
+                                            <option value="2">Bom</option>
+                                            <option value="1">Ruim</option>
+                                        </select>
+                                    </div>
+                               </label>
+                               <label>
+                                <div class="mural">
+                                    <div class="mural-boxer">    
+                                            <div class="comentario-escreva">
+                                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5" placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               </label>
+                               <button onclick="enviar()">Enviar</button>
+                           </form>
+                            <span id="avalie">Comentários</span>
+                            <div class="div-results">
+                                <div id="feed_container" class="feed-container">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mural">
-                    <div class="mural-boxer">
-                        <div id="comentario-mural">aqui tem o comentário</div>       
-                            <div class="comentario-escreva">
-                                <input id="input_comentario" type="text"placeholder="Deixe sua avaliação e seucomentário">
-                                <button onclick="enviar()">Enviar</button>
+            </div>
+        </div>
+    </div>
+    <div class="pai-mural" id="ima">
+        <div class="container1">
+            <div class="banner-mural">
+                <span id="titulo-mural">IMA - Em Breve!</span>
+                <b id="ano-mural">2026</b>
+                <div class="imagem-mural">
+                    <img id="img-todos-halloween" src="assets/img/pexels-minan1398-1157557.jpg" >
+                    <img id="img-seinen-halloween" src="assets/img/Logo_IMA.png" >
+                </div>
+            </div>
+            <div class="avaliacao-mural">
+                    <span id="avalie">AVALIE O EVENTO</span>
+                       <div class="div-form">
+                           <form id="form_postagem" method="post" onsubmit="return publicar()">
+                               <label>
+                                   <div class="select-avaliacao">
+                                        <select id="select_avaliacao">
+                                            <option value="#">Avalie-nos</option>
+                                            <option value="3">Ótimo</option>
+                                            <option value="2">Bom</option>
+                                            <option value="1">Ruim</option>
+                                        </select>
+                                    </div>
+                               </label>
+                               <label>
+                                <div class="mural">
+                                    <div class="mural-boxer">    
+                                            <div class="comentario-escreva">
+                                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5" placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               </label>
+                               <button onclick="enviar()">Enviar</button>
+                           </form>
+                            <span id="avalie">Comentários</span>
+                            <div class="div-results">
+                                <div id="feed_container" class="feed-container">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pai-mural" id="ham">
+        <div class="container">
+            <div class="banner-mural">
+                <span id="titulo-mural">HAM</span>
+                <b id="ano-mural">2025</b>
+                <div class="imagem-mural">
+                    <img id="img-todos-halloween" src="assets/img/pexels-a-darmel-6643714.jpg" >
+                    <img id="img-seinen-halloween" src="assets/img/Logo_HAM.png" >
+                </div>
+            </div>
+            <div class="avaliacao-mural">
+                    <span id="avalie">AVALIE O EVENTO</span>
+                       <div class="div-form">
+                           <form id="form_postagem" method="post" onsubmit="return publicar()">
+                               <label>
+                                   <div class="select-avaliacao">
+                                        <select id="select_avaliacao">
+                                            <option value="#">Avalie-nos</option>
+                                            <option value="3">Ótimo</option>
+                                            <option value="2">Bom</option>
+                                            <option value="1">Ruim</option>
+                                        </select>
+                                    </div>
+                               </label>
+                               <label>
+                                <div class="mural">
+                                    <div class="mural-boxer">    
+                                            <div class="comentario-escreva">
+                                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5" placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               </label>
+                               <button onclick="enviar()">Enviar</button>
+                           </form>
+                            <span id="avalie">Comentários</span>
+                            <div class="div-results">
+                                <div id="feed_container" class="feed-container">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pai-mural" id="festival_temaki">
+        <div class="container1">
+            <div class="banner-mural">
+                <span id="titulo-mural">Festival do Temaki</span>
+                <b id="ano-mural">2025</b>
+                <div class="imagem-mural">
+                    <img id="img-todos-halloween" src="assets/img/Captura de tela 2025-11-22 193341.png" >
+                    <img id="img-seinen-halloween" src="assets/img/logo_Festival_temaki.png" >
+                </div>
+            </div>
+            <div class="avaliacao-mural">
+                    <span id="avalie">AVALIE O EVENTO</span>
+                       <div class="div-form">
+                           <form id="form_postagem" method="post" onsubmit="return publicar()">
+                               <label>
+                                   <div class="select-avaliacao">
+                                        <select id="select_avaliacao">
+                                            <option value="#">Avalie-nos</option>
+                                            <option value="3">Ótimo</option>
+                                            <option value="2">Bom</option>
+                                            <option value="1">Ruim</option>
+                                        </select>
+                                    </div>
+                               </label>
+                               <label>
+                                <div class="mural">
+                                    <div class="mural-boxer">    
+                                            <div class="comentario-escreva">
+                                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5" placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               </label>
+                               <button onclick="enviar()">Enviar</button>
+                           </form>
+                            <span id="avalie">Comentários</span>
+                            <div class="div-results">
+                                <div id="feed_container" class="feed-container">
                             </div>
                         </div>
                     </div>
@@ -151,6 +302,7 @@
         </div>
     </div>
 
+
     <div class="footer">
         <div class="container">
             <h4>Eduarda Kaori Nakandakari &hearts; Seinen Vila Alpina &copy; 2025</h4>
@@ -158,6 +310,7 @@
             <a href="https://www.instagram.com/seinen_vilaalpina?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img  src="assets/icon/icons8-instagram-100.png"></a>
         </div>
     </div>
+
 </body>
 </html>
 <script>
@@ -183,4 +336,161 @@
       }
     }
   });
+
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+    function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            titulo: form_postagem.titulo.value,
+            descricao: form_postagem.descricao.value
+        }
+
+        fetch(`/avisos/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "/dashboard/mural.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    function editar(idAviso) {
+        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
+        console.log("cliquei em editar - " + idAviso);
+        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
+        window.location = "/dashboard/edicao-aviso.html"
+
+    }
+
+    function deletar(idAviso) {
+        console.log("Criar função de apagar post escolhido - ID" + idAviso);
+        fetch(`/avisos/deletar/${idAviso}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/mural.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function atualizarFeed() {
+        fetch("/avisos/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        var spanTitulo = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+                        var divButtons = document.createElement("div");
+                        var btnEditar = document.createElement("button");
+                        var btnDeletar = document.createElement("button");
+
+
+                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        btnEditar.innerHTML = "Editar";
+                        btnDeletar.innerHTML = "Deletar";
+
+                        divPublicacao.className = "publicacao";
+                        spanTitulo.id = "inputNumero" + publicacao.idAviso;
+                        spanNome.className = "publicacao-nome";
+                        spanTitulo.className = "publicacao-titulo";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divButtons.className = "div-buttons"
+
+                        btnEditar.className = "publicacao-btn-editar"
+                        btnEditar.id = "btnEditar" + publicacao.idAviso;
+                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
+
+                        btnDeletar.className = "publicacao-btn-editar"
+                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
+                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
+
+                        divPublicacao.appendChild(spanID);
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanTitulo);
+                        divPublicacao.appendChild(divDescricao);
+                        divPublicacao.appendChild(divButtons);
+                        divButtons.appendChild(btnEditar);
+                        divButtons.appendChild(btnDeletar);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+
 </script>
+
+
+
+
+
+
+
+

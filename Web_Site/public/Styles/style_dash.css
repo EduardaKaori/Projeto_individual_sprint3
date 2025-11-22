@@ -298,8 +298,8 @@ body {
 }
 .select-avaliacao {
     background-color: #1d6c42;
-    width: 200px;
-    height: 100px;
+    width: 150px;
+    height: 74px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -308,45 +308,79 @@ body {
 }
 #select_avaliacao {
     background-color: #f45d7b;
-    font-size: 20px;
+    font-size: 15px;
     color: #FFFFFF;
     border-radius: 20px;
     font-family: "Playfair Display", serif;
-    width: 130px;
-    height: 55px;
+    width: 100px;
+    height: 40px;
 }
 .mural {
-    background-color: #58ab71;
-    width: 80%;
-    height: 60%;
-    gap: 20px;
+    display: flex;
 }
 
 .mural-boxer {
+    background-color: #58ab71;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
+    width: 136%;
+    height: 118%;
 }
-#comentario-mural {
-    background-color: white;
-    color: #148937;
-    font-family: "Playfair Display", serif;
-    font-size: 15px;
+.comentario-escreva {
     width: 80%;
-    height: 20%;
-    border-radius: 20px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
-.comentario-escreva {
+textarea {
+    border-radius: 20px;
+    border-color: #148937;
+    color: #148937;
+    width: 350%;
+    height: 89%;
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+}
+.div-form {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
-    justify-content: flex-end;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center ;
+    justify-items: center;
+    width: 50%;
+    height: 100%;
+}
+.div-results {
+    border: #148937;
+    width: 90%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #58ab71;
+    margin-bottom: 10px
+}
+.pai-mural .container1{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
-
+#form_postagem button {
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  background-color: #ED145B;
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
+}
