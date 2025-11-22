@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seinen Vila Alpina | Eventos </title>
+    <link rel="stylesheet" href="Styles/style_dash.css">
+    <link rel="stylesheet" href="Styles/style.css">
+    <link rel="icon" href="assets/icon/logo_seinen.png">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Londrina+Shadow&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header_dash">
+        <div class="container_dash">
+            <div class="icone">
+                <img id="logo_coala" src="assets/icon/Logo_seinen_coala.png">
+                <span id="nome_pagina">EVENTOS</span>
+            </div>
+            <ul class="navbar_dash">
+                <li class="agora_dash">
+                    <a href="#inicio_dash">Avaliação Geral</a>
+                </li>
+                <li>
+                    <a class="btn-navbar-dash" href="#halloween">Halloween VA</a>
+                </li>
+                <li>
+                    <a class="btn-navbar-dash" href="#ima">IMA</a>
+                </li>
+                <li>
+                    <a class="btn-navbar-dash" href="#ham">HAM</a>
+                </li>
+                <li>
+                    <a class="btn-navbar-dash" href="#festival_temaki">Festival do Temaki</a>
+                </li>
+                <li>
+                    <button id="voltar" onclick="voltar()"><a href="index.html">&#8592; Voltar</a></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+        <div class="eventos_visao" id="eventos">
+        <div class="container">
+            <div class="boxer"> 
+                <div class="box">
+                    <span id="subtitulo">Halloween Party VA</span>
+                    <img src="assets/img/Logo_halloweenVA.png">
+                    <div class="fundo_branco">
+                        <b>Data: 26/10/2025</b>
+                        <span id="avaliacao">Avaliação</span>
+                        <div class="porcentagem">
+                            <img id="joia" src="assets/icon/joia-removebg-preview.png">
+                            <div id="porcem_halloween"><b id="porcentagem">--%</b></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <span id="subtitulo">IMA - Evento de <br>Integração</span>
+                    <img src="assets/img/Logo_IMA.png">
+                    <div class="fundo_branco">
+                        <b>Data: Abril 2026</b>
+                        <span id="avaliacao">Avaliação</span>
+                        <div class="porcentagem">
+                            <img id="joia" src="assets/icon/joia-removebg-preview.png">
+                            <div id="porcem_halloween"><b id="porcentagem">70%</b></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <span id="subtitulo">HAM - Hamburguer <br> Alpinos Minigames </span>
+                    <img src="assets/img/Logo_HAM.png">
+                    <div class="fundo_branco">
+                        <b>Data: 30/03/25</b>
+                        <span id="avaliacao">Avaliação</span>
+                        <div class="porcentagem">
+                            <img id="joia" src="assets/icon/joia-removebg-preview.png">
+                            <div id="porcem_halloween"><b id="porcentagem">--%</b></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <span id="subtitulo">Festival do Temaki</span>
+                    <img src="assets/img/logo_Festival_temaki.png">
+                    <div class="fundo_branco">
+                        <b>Data: 14/09/25</b>
+                        <span id="avaliacao">Avaliação</span>
+                        <div class="porcentagem">
+                            <img id="joia" src="assets/icon/joia-removebg-preview.png">
+                            <div id="porcem_halloween"><b id="porcentagem">--%</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="eventos_visao">
+        <div class="pai">
+            <div class="box-dash">
+                <div class="box-kpi">
+                    <b>Evento com mais comentários</b>
+                    <div id="kpi_comentarios"><b>--</b></div>
+                </div>
+                <div class="box-kpi">
+                    <b>Quantidade de avaliações</b>
+                    <div id="kpi_qtd_avaliacoes"><b>--</b></div>
+                </div>
+            </div>
+            <div class="box-dash">
+                <div class="box-ranking">
+                <b id="ranking">Ranking de eventos <br> mais bem avaliados</b>
+                <canvas id="grafico-ranking"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pai-mural" id="halloween">
+        <div class="container">
+            <div class="banner-mural">
+                <span id="titulo-mural">HALLOWEEN VA</span>
+                <b id="ano-mural">2025</b>
+                <div class="imagem-mural">
+                    <img id="img-todos-halloween" src="assets/img/halloweenVA_todos.JPG" >
+                    <img id="img-seinen-halloween" src="assets/img/halloweenVA_seinen.JPG" >
+                </div>
+            </div>
+            <div class="avaliacao-mural">
+                <span id="avalie">AVALIE O EVENTO</span>
+                <div class="select-avaliacao">
+                    <select id="select_avaliacao">
+                        <option value="#">Avalie-nos</option>
+                        <option value="3">Ótimo</option>
+                        <option value="2">Bom</option>
+                        <option value="1">Ruim</option>
+                    </select>
+                </div>
+                <div class="mural">
+                    <div class="mural-boxer">
+                        <div id="comentario-mural">aqui tem o comentário</div>       
+                            <div class="comentario-escreva">
+                                <input id="input_comentario" type="text"placeholder="Deixe sua avaliação e seucomentário">
+                                <button onclick="enviar()">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h4>Eduarda Kaori Nakandakari &hearts; Seinen Vila Alpina &copy; 2025</h4>
+            <span class="version">v1.0.0</span><br>
+            <a href="https://www.instagram.com/seinen_vilaalpina?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img  src="assets/icon/icons8-instagram-100.png"></a>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const ctx = document.getElementById('grafico-ranking');
+
+    new Chart(ctx, { 
+    type: 'bar', 
+    data: {
+      labels: ['Halloween VA', 'IMA', 'HAM','Festival Temaki'], 
+      datasets: [{ 
+        label: 'Quantidade de avaliações', 
+        data: [10, 50, 40, 35],  
+        borderWidth: 1,
+        borderColor:['#7d0101','#4d74ff', '#fac940','#fac8e4'],
+        backgroundColor: ['#7d0101', '#4d74ff', '#fac940', '#fac8e4'],
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>

@@ -417,54 +417,18 @@ body {
 .interesse {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    width: 50%;
-    margin-left: 50px;
-}
-#input_mensagem{
-    height: 200px;
-}
-
-#input_email, #input_mensagem{
     background-color: white;
-    padding: 10px;
-    width: 60%;
-    border: none;
+    width: 33%;
+    height: 48%;
     border-radius: 20px;
 }
-
-#input_email:focus, #input_mensagem:focus{
-    border: 5px solid #f29ba9;
-    outline: none;
-}
-
-#input_email::placeholder, #input_mensagem::placeholder{
-    font-size: 20px;
-    font-family: "Bebas Neue", sans-serif;
-    color: #6eb666;
-}
-
 .interesse b{
-    color:#f29ba9 ;
-    font-size: 20px;
+    color:#148937 ;
+    font-size: 25px;
 }
 
-.enviar{
-    background-color: #f29ba9;
-    width: 20%;
-    border-radius: 20px;
-    border: none;
-    color: #FFFFFF;
-    font-size: 20px;
-    font-weight: 900;
-    margin-left: 30%;
-    margin-top: 10px;
-}
-.enviar:hover{
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    box-shadow: 1px 1px 5px #a89595;
-}
 /*fim contato */
 
 /*começo footer */
@@ -492,3 +456,168 @@ body {
     height: 30px;
 }
 /* fim footer */
+
+
+/*login*/
+.login {
+  height: var(--tamanho-login);
+  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-size: cover;
+}
+
+.login .container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  width: 50%;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: palevioletred;
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.formulario {
+  display: flex;
+  height: 90%;
+  width: 80%;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.formulario span {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.formulario input {
+  border: 2px solid #32b9cd;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.formulario select {
+  border: 2px solid #32b9cd;
+  background-color: white;
+  color: gray;
+  height: 36px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 5px 0;
+}
+
+.botao {
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  background-color: #ED145B;
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
+}
+
+/* FORMULARIO */
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #ED145B 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.formulario .tipo_campo {
+  font-size: 20px;
+  font-weight: 600 !important;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  border: 2px solid #32b9cd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.btn {
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 15px;
+  color: white;
+  background-color: #ED145B;
+  width: 120px;
+  align-self: center;
+  margin-top: 5px;
+}
+
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}

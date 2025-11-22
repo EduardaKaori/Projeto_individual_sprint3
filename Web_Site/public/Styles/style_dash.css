@@ -1,0 +1,352 @@
+/* começo eventos_dashboard*/
+
+/* começo navbar*/
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+}
+.header_dash {
+    background-color: white;
+    border-bottom: 1px solid #f29ba9;
+}
+.navbar_dash {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    width: 5000px; 
+}
+.navbar_dash  button {
+    list-style: none;
+    background-color:#f4f4f4;
+    border-color: #f29ba9;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+.navbar_dash  button a:hover {
+    color: #FFFFFF;
+    background-color: #f29ba9 ;
+}
+.navbar_dash  button:hover{
+    cursor: pointer;
+    background-color: #f29ba9;
+    transition: 0.2s ease-in-out;
+    color: #FFFFFF;
+}
+.navbar_dash  .btn-navbar-dash:hover{
+    color: #148937;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.header_dash .container_dash {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5%;
+}
+.header_dash .container_dash img {
+    margin-left: 5%;
+    padding: 7px 0;
+}
+.navbar_dash a {
+    color: #a7cfa8;
+    text-decoration: none;
+    font-size: 20px;
+    font-style: normal;
+    font-family: "Playfair Display", serif;
+}
+.agora_dash a {
+    color: #f29ba9;
+    font-weight: bold;
+}
+#logo_coala {
+    width: 16%;
+}
+#nome_pagina {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 70px;
+    font-style: bold;
+    color: #f29ba9;
+}
+.icone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+/* fim navbar */
+
+/*começo visão geral */
+.eventos_visao {
+    background-image: url(../assets/img/background_visão_geral.png);
+    background-size: cover;
+    height: 35em;
+}
+.eventos_visao .container{
+    display: flex;
+    justify-content: center ;
+    align-self: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+.boxer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.boxer img {
+    width: 180px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+.boxer .fundo_branco {
+    width: 180px;
+    height: 200px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box #subtitulo {
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+    color: white;
+    background-color: #f29ba9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+}
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box p {
+    color: #148937;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+}
+.box b {
+    color: #148937;
+    font-size: 18px;
+}   
+.porcentagem {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+.porcentagem #joia {
+    width: 70px;
+    height: 80px;
+    margin-right: 10px;
+}
+.fundo_branco #avaliacao {
+    color: #f45d7b;
+    font-size: 20px;
+    font-style: bold;
+}
+#porcentagem {
+    color: #f45d7b;
+    font-size: 50px;
+    font-family:"Bebas Neue", sans-serif;
+}
+
+.pai {
+    display: flex;
+    justify-content: space-around ;
+    align-self: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: row; 
+}
+
+.box-dash {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+
+}
+
+.box-kpi {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #148937;
+    width: 55%;
+    height: 50%;
+
+}
+.box-kpi b {
+    font-size: 38px;
+    color: #f29ba9;
+    font-family:"Bebas Neue", sans-serif;
+}
+.box-dash #ranking {
+    font-size: 30px;
+    color: white;
+    background-color: #f29ba9;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+.box-ranking {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.box-ranking canvas {
+    width: 500px;
+    background-color: white;
+}
+/*FIM VISÃO GERAL */ 
+
+/* COMEÇO AVALIAÇÃO */
+
+            /*overflow: auto -- SERVE PARA COLOCAR UM SCROLL TIPO DO NAVEGADOR EM UMA DIV */
+.pai-mural {
+    background-color: white;
+    background-size: cover;
+    height: 35em;
+}
+.pai-mural .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.banner-mural {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+.banner-mural #titulo-mural {
+    color: #f29ba9;
+    font-size: 100px;
+    font-style: bold;
+    font-family: "Bebas Neue", sans-serif;
+}
+.banner-mural #ano-mural {
+    color: #f29ba9;
+    font-size: 50px;
+    font-style: bold;
+    font-family: "Bebas Neue", sans-serif;
+}
+.imagem-mural {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content:center;
+    gap: 20px;
+}
+.imagem-mural #img-todos-halloween {
+    width: 400px;
+    height: 250px;
+}
+.imagem-mural #img-seinen-halloween {
+    width: 190px;
+    height: 250px;
+}
+.avaliacao-mural {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f29ba9;
+    width: 50%;
+    height: 100%;
+}
+#avalie {
+    color: #1d6c42;
+    font-size: 50px;
+    font-style: bold;
+    font-family: "Bebas Neue", sans-serif;
+}
+.select-avaliacao {
+    background-color: #1d6c42;
+    width: 200px;
+    height: 100px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#select_avaliacao {
+    background-color: #f45d7b;
+    font-size: 20px;
+    color: #FFFFFF;
+    border-radius: 20px;
+    font-family: "Playfair Display", serif;
+    width: 130px;
+    height: 55px;
+}
+.mural {
+    background-color: #58ab71;
+    width: 80%;
+    height: 60%;
+    gap: 20px;
+}
+
+.mural-boxer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+#comentario-mural {
+    background-color: white;
+    color: #148937;
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    width: 80%;
+    height: 20%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.comentario-escreva {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+
