@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seinen Vila Alpina | Eventos </title>
-    <link rel="stylesheet" href="Styles/style_dash.css">
-    <link rel="stylesheet" href="Styles/style.css">
     <link rel="icon" href="assets/icon/logo_seinen.png">
 
+    <link rel="stylesheet" href="Styles/style_dash.css">
+    <link rel="stylesheet" href="Styles/style.css">
+
+    <script src="js/alerta.js"></script>
+    <script src="js/sessao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Londrina+Shadow&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Londrina+Shadow&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
 </head>
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+
+<body onload="atualizarFeed1(), atualizarFeed2(), atualizarFeed3(), atualizarFeed4(), validarSessao()">
     <div class="header_dash">
         <div class="container_dash">
             <div class="icone">
@@ -41,11 +49,15 @@
                     <button id="voltar" onclick="limparSessao()"><a href="index.html">&#8592; Voltar</a></button>
                 </li>
             </ul>
+            <div class="usuario">
+                <img src="assets/img/17004.png">
+                <span id="b_usuario"></span>
+            </div>
         </div>
     </div>
-        <div class="eventos_visao" id="eventos">
+    <div class="eventos_visao" id="eventos">
         <div class="container">
-            <div class="boxer"> 
+            <div class="boxer">
                 <div class="box">
                     <span id="subtitulo">Halloween Party VA</span>
                     <img src="assets/img/Logo_halloweenVA.png">
@@ -111,8 +123,8 @@
             </div>
             <div class="box-dash">
                 <div class="box-ranking">
-                <b id="ranking">Ranking de eventos <br> mais bem avaliados</b>
-                <canvas id="grafico-ranking"></canvas>
+                    <b id="ranking">Ranking de eventos <br> mais bem avaliados</b>
+                    <canvas id="grafico-ranking"></canvas>
                 </div>
             </div>
         </div>
@@ -123,45 +135,48 @@
                 <span id="titulo-mural">HALLOWEEN VA</span>
                 <b id="ano-mural">2025</b>
                 <div class="imagem-mural">
-                    <img id="img-todos-halloween" src="assets/img/halloweenVA_todos.JPG" >
-                    <img id="img-seinen-halloween" src="assets/img/halloweenVA_seinen.JPG" >
+                    <img id="img-todos-halloween" src="assets/img/halloweenVA_todos.JPG">
+                    <img id="img-seinen-halloween" src="assets/img/halloweenVA_seinen.JPG">
                 </div>
             </div>
             <div class="avaliacao-mural">
-                    <span id="avalie">AVALIE O EVENTO</span>
-                       <div class="div-form">
-                           <form id="form_postagem" method="post" onsubmit="return publicar()">
-                               <label>
-                                   <div class="select-avaliacao">
-                                        <select id="select_avaliacao">
-                                            <option value="#">Avalie-nos</option>
-                                            <option value="3">Ótimo</option>
-                                            <option value="2">Bom</option>
-                                            <option value="1">Ruim</option>
-                                        </select>
-                                    </div>
-                               </label>
-                               <label>
-                                <div class="mural">
-                                    <div class="mural-boxer">    
-                                            <div class="comentario-escreva">
-                                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5" placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
-                                            </div>
-                                        </div>
+                <span id="avalie">AVALIE O EVENTO</span>
+                <div class="div-form">
+                    <form id="form_postagem" method="post" onsubmit="return publicar_halloweenVA()">
+                        <label>
+                        <div class="select-avaliacao">
+                                <select id="select_avaliacao_halloween" class="select_avaliacao">
+                                    <option value="#">Avalie-nos</option>
+                                    <option value="Ótimo">Ótimo</option>
+                                    <option value="Bom">Bom</option>
+                                    <option value="Ruim">Ruim</option>
+                                </select>
+                            </div>
+                        </label>
+                        <label>
+                            <div class="mural">
+                                <div class="mural-boxer">
+                                    <div class="comentario-escreva">
+                                    
+                                        <textarea name="descricao" id="textarea_descricao_halloween" maxlength="250"
+                                            rows="5" placeholder="Escreva seu comentário aqui"
+                                            style="resize: none;"></textarea>
                                     </div>
                                 </div>
-                               </label>
-                               <button onclick="enviar()">Enviar</button>
-                           </form>
-                            <span id="avalie">Comentários</span>
-                            <div class="div-results">
-                                <div id="feed_container" class="feed-container">
                             </div>
-                        </div>
+                         </div>
+                         </label>
+                <button id="button_enviar">Enviar</button>
+                </form>
+                <span id="avalie">Comentários</span>
+                <div class="div-results">
+                    <div id="feed_container_halloween" class="feed-container">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     <div class="pai-mural" id="ima">
         <div class="container1">
@@ -169,45 +184,46 @@
                 <span id="titulo-mural">IMA - Em Breve!</span>
                 <b id="ano-mural">2026</b>
                 <div class="imagem-mural">
-                    <img id="img-todos-halloween" src="assets/img/pexels-minan1398-1157557.jpg" >
-                    <img id="img-seinen-halloween" src="assets/img/Logo_IMA.png" >
+                    <img id="img-todos-halloween" src="assets/img/pexels-minan1398-1157557.jpg">
+                    <img id="img-seinen-halloween" src="assets/img/Logo_IMA.png">
                 </div>
             </div>
             <div class="avaliacao-mural">
-                    <span id="avalie">AVALIE O EVENTO</span>
-                       <div class="div-form">
-                           <form id="form_postagem" method="post" onsubmit="return publicar()">
-                               <label>
-                                   <div class="select-avaliacao">
-                                        <select id="select_avaliacao">
-                                            <option value="#">Avalie-nos</option>
-                                            <option value="3">Ótimo</option>
-                                            <option value="2">Bom</option>
-                                            <option value="1">Ruim</option>
-                                        </select>
-                                    </div>
-                               </label>
-                               <label>
-                                <div class="mural">
-                                    <div class="mural-boxer">    
-                                            <div class="comentario-escreva">
-                                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5" placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
-                                            </div>
-                                        </div>
+                <span id="avalie">AVALIE O EVENTO</span>
+                <div class="div-form">
+                    <form id="form_postagem" onsubmit="return publicar_ima()">
+                        <label>
+                            <div class="select-avaliacao">
+                                <select id="select_avaliacao_ima" class="select_avaliacao">
+                                    <option value="#">Avalie-nos</option>
+                                    <option value="Ótimo">Ótimo</option>
+                                    <option value="Bom">Bom</option>
+                                    <option value="Ruim">Ruim</option>
+                                </select>
+                            </div>
+                        </label>
+                        <label>
+                            <div class="mural">
+                                <div class="mural-boxer">
+                                    <div class="comentario-escreva">
+                                        <textarea name="descricao" id="textarea_descricao_ima" maxlength="250" rows="5"
+                                            placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
                                     </div>
                                 </div>
-                               </label>
-                               <button onclick="enviar()">Enviar</button>
-                           </form>
-                            <span id="avalie">Comentários</span>
-                            <div class="div-results">
-                                <div id="feed_container" class="feed-container">
                             </div>
-                        </div>
+                </div>
+                </label>
+                <button id="button_enviar">Enviar</button>
+                </form>
+                <span id="avalie">Comentários</span>
+                <div class="div-results">
+                    <div id="feed_container_ima" class="feed-container">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     <div class="pai-mural" id="ham">
         <div class="container">
@@ -215,45 +231,46 @@
                 <span id="titulo-mural">HAM</span>
                 <b id="ano-mural">2025</b>
                 <div class="imagem-mural">
-                    <img id="img-todos-halloween" src="assets/img/pexels-a-darmel-6643714.jpg" >
-                    <img id="img-seinen-halloween" src="assets/img/Logo_HAM.png" >
+                    <img id="img-todos-halloween" src="assets/img/pexels-a-darmel-6643714.jpg">
+                    <img id="img-seinen-halloween" src="assets/img/Logo_HAM.png">
                 </div>
             </div>
             <div class="avaliacao-mural">
-                    <span id="avalie">AVALIE O EVENTO</span>
-                       <div class="div-form">
-                           <form id="form_postagem" method="post" onsubmit="return publicar()">
-                               <label>
-                                   <div class="select-avaliacao">
-                                        <select id="select_avaliacao">
-                                            <option value="#">Avalie-nos</option>
-                                            <option value="3">Ótimo</option>
-                                            <option value="2">Bom</option>
-                                            <option value="1">Ruim</option>
-                                        </select>
-                                    </div>
-                               </label>
-                               <label>
-                                <div class="mural">
-                                    <div class="mural-boxer">    
-                                            <div class="comentario-escreva">
-                                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5" placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
-                                            </div>
-                                        </div>
+                <span id="avalie">AVALIE O EVENTO</span>
+                <div class="div-form">
+                    <form id="form_postagem" onsubmit="return publicar_ham()">
+                        <label>
+                            <div class="select-avaliacao">
+                                <select id="select_avaliacao_ham" class="select_avaliacao">
+                                    <option value="#">Avalie-nos</option>
+                                    <option value="Ótimo">Ótimo</option>
+                                    <option value="Bom">Bom</option>
+                                    <option value="Ruim">Ruim</option>
+                                </select>
+                            </div>
+                        </label>
+                        <label>
+                            <div class="mural">
+                                <div class="mural-boxer">
+                                    <div class="comentario-escreva">
+                                        <textarea name="descricao" id="textarea_descricao_ham" maxlength="250" rows="5"
+                                            placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
                                     </div>
                                 </div>
-                               </label>
-                               <button onclick="enviar()">Enviar</button>
-                           </form>
-                            <span id="avalie">Comentários</span>
-                            <div class="div-results">
-                                <div id="feed_container" class="feed-container">
                             </div>
-                        </div>
+                </div>
+                </label>
+                <button id="button_enviar">Enviar</button>
+                </form>
+                <span id="avalie">Comentários</span>
+                <div class="div-results">
+                    <div id="feed_container_ham" class="feed-container">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     <div class="pai-mural" id="festival_temaki">
         <div class="container1">
@@ -261,98 +278,107 @@
                 <span id="titulo-mural">Festival do Temaki</span>
                 <b id="ano-mural">2025</b>
                 <div class="imagem-mural">
-                    <img id="img-todos-halloween" src="assets/img/Captura de tela 2025-11-22 193341.png" >
-                    <img id="img-seinen-halloween" src="assets/img/logo_Festival_temaki.png" >
+                    <img id="img-todos-halloween" src="assets/img/Captura de tela 2025-11-22 193341.png">
+                    <img id="img-seinen-halloween" src="assets/img/logo_Festival_temaki.png">
                 </div>
             </div>
             <div class="avaliacao-mural">
-                    <span id="avalie">AVALIE O EVENTO</span>
-                       <div class="div-form">
-                           <form id="form_postagem" method="post" onsubmit="return publicar()">
-                               <label>
-                                   <div class="select-avaliacao">
-                                        <select id="select_avaliacao">
-                                            <option value="#">Avalie-nos</option>
-                                            <option value="3">Ótimo</option>
-                                            <option value="2">Bom</option>
-                                            <option value="1">Ruim</option>
-                                        </select>
-                                    </div>
-                               </label>
-                               <label>
-                                <div class="mural">
-                                    <div class="mural-boxer">    
-                                            <div class="comentario-escreva">
-                                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5" placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
-                                            </div>
-                                        </div>
+                <span id="avalie">AVALIE O EVENTO</span>
+                <div class="div-form">
+                    <form id="form_postagem" onsubmit="return publicar_festivalTemaki()">
+                        <label>
+                            <div class="select-avaliacao" class="select_avaliacao">
+                                <select id="select_avaliacao_festivalTemaki" class="select_avaliacao">
+                                    <option value="#">Avalie-nos</option>
+                                    <option value="Ótimo">Ótimo</option>
+                                    <option value="Bom">Bom</option>
+                                    <option value="Ruim">Ruim</option>
+                                </select>
+                            </div>
+                        </label>
+                        <label>
+                            <div class="mural">
+                                <div class="mural-boxer">
+                                    <div class="comentario-escreva">
+                                        <textarea name="descricao" id="textarea_descricao_festivalTemaki" maxlength="250" rows="5"
+                                            placeholder="Escreva seu comentário aqui" style="resize: none;"></textarea>
                                     </div>
                                 </div>
-                               </label>
-                               <button onclick="enviar()">Enviar</button>
-                           </form>
-                            <span id="avalie">Comentários</span>
-                            <div class="div-results">
-                                <div id="feed_container" class="feed-container">
                             </div>
-                        </div>
+                </div>
+                </label>
+                <button id="button_enviar">Enviar</button>
+                </form>
+                <span id="avalie">Comentários</span>
+                <div class="div-results">
+                    <div id="feed_container_festivalTemaki" class="feed-container">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    </div>
+    </div>
 
     <div class="footer">
         <div class="container">
             <h4>Eduarda Kaori Nakandakari &hearts; Seinen Vila Alpina &copy; 2025</h4>
             <span class="version">v1.0.0</span><br>
-            <a href="https://www.instagram.com/seinen_vilaalpina?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img  src="assets/icon/icons8-instagram-100.png"></a>
+            <a
+                href="https://www.instagram.com/seinen_vilaalpina?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img
+                    src="assets/icon/icons8-instagram-100.png"></a>
         </div>
     </div>
 
+
+
 </body>
+
 </html>
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_xUSUARIO;
+
+
     const ctx = document.getElementById('grafico-ranking');
 
-    new Chart(ctx, { 
-    type: 'bar', 
-    data: {
-      labels: ['Halloween VA', 'IMA', 'HAM','Festival Temaki'], 
-      datasets: [{ 
-        label: 'Quantidade de avaliações', 
-        data: [10, 50, 40, 35],  
-        borderWidth: 1,
-        borderColor:['#7d0101','#4d74ff', '#fac940','#fac8e4'],
-        backgroundColor: ['#7d0101', '#4d74ff', '#fac940', '#fac8e4'],
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Halloween VA', 'IMA', 'HAM', 'Festival Temaki'],
+            datasets: [{
+                label: 'Quantidade de avaliações',
+                data: [10, 50, 40, 35],
+                borderWidth: 1,
+                borderColor: ['#7d0101', '#4d74ff', '#fac940', '#fac8e4'],
+                backgroundColor: ['#7d0101', '#4d74ff', '#fac940', '#fac8e4'],
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-      }
-    }
-  });
+    });
 
 
-    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
     }
 
-    function publicar() {
+    function publicar_halloweenVA() {
         var idUsuario = sessionStorage.ID_USUARIO;
+        var avaliacao_select = select_avaliacao_halloween.value;
+        var descricao_comentario = textarea_descricao_halloween.value;
 
         var corpo = {
-            titulo: form_postagem.titulo.value,
-            descricao: form_postagem.descricao.value
+            avaliacao: avaliacao_select,
+            descricao: descricao_comentario,
         }
 
-        fetch(`/avisos/publicar/${idUsuario}`, {
+        fetch(`/avisos/publicar_halloweenVA/${idUsuario}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -364,7 +390,7 @@
 
             if (resposta.ok) {
                 window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-                window.location = "/dashboard/mural.html";
+                window.location = "eventos_dashboard.html";
                 limparFormulario();
                 finalizarAguardar();
             } else if (resposta.status == 404) {
@@ -381,26 +407,31 @@
 
     }
 
-    function editar(idAviso) {
-        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
-        console.log("cliquei em editar - " + idAviso);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
-        window.location = "/dashboard/edicao-aviso.html"
+    function publicar_ima() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var avaliacao_select = select_avaliacao_ima.value;
+        var descricao_comentario = textarea_descricao_ima.value;
 
-    }
+        var corpo = {
+            avaliacao: avaliacao_select,
+            descricao: descricao_comentario,
+        }
 
-    function deletar(idAviso) {
-        console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}`, {
-            method: "DELETE",
+        fetch(`/avisos/publicar_ima/${idUsuario}`, {
+            method: "post",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify(corpo)
         }).then(function (resposta) {
 
+            console.log("resposta: ", resposta);
+
             if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/public/eventos_dashboard.html"
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "eventos_dashboard.html";
+                limparFormulario();
+                finalizarAguardar();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -408,14 +439,97 @@
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
         });
+
+        return false;
+
     }
 
-    function atualizarFeed() {
-        fetch("/avisos/listar").then(function (resposta) {
+    function publicar_ham() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var avaliacao_select = select_avaliacao_ham.value;
+        var descricao_comentario = textarea_descricao_ham.value;
+
+        var corpo = {
+            avaliacao: avaliacao_select,
+            descricao: descricao_comentario,
+        }
+
+        fetch(`/avisos/publicar_ham/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "eventos_dashboard.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+      function publicar_festivalTemaki() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var avaliacao_select = select_avaliacao_festivalTemaki.value;
+        var descricao_comentario = textarea_descricao_festivalTemaki.value;
+
+        var corpo = {
+            avaliacao: avaliacao_select,
+            descricao: descricao_comentario,
+        }
+
+        fetch(`/avisos/publicar_festivalTemaki/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "eventos_dashboard.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+
+    function atualizarFeed1() {
+        fetch("/avisos/listar_halloween").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
-                    var feed = document.getElementById("feed_container");
+                    var feed = document.getElementById("feed_container_halloween");
                     var mensagem = document.createElement("span");
                     mensagem.innerHTML = "Nenhum resultado encontrado."
                     feed.appendChild(mensagem);
@@ -425,52 +539,186 @@
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                    var feed = document.getElementById("feed_container");
+                    var feed = document.getElementById("feed_container_halloween");
                     feed.innerHTML = "";
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
-                        var spanID = document.createElement("span");
-                        var spanTitulo = document.createElement("span");
+                        var spanAvaliacao = document.createElement("span");
                         var spanNome = document.createElement("span");
                         var divDescricao = document.createElement("div");
-                        var divButtons = document.createElement("div");
-                        var btnEditar = document.createElement("button");
-                        var btnDeletar = document.createElement("button");
 
-
-                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-                        btnEditar.innerHTML = "Editar";
-                        btnDeletar.innerHTML = "Deletar";
+                        //spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        spanAvaliacao.innerHTML = "Avaliação: <b>" + publicacao.avaliacao + "</b>" + "<br>";
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>" + "<br>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>" + "<br>";
 
                         divPublicacao.className = "publicacao";
-                        spanTitulo.id = "inputNumero" + publicacao.idAviso;
                         spanNome.className = "publicacao-nome";
-                        spanTitulo.className = "publicacao-titulo";
+                        spanAvaliacao.className = "publicacao-Avaliacao";
                         divDescricao.className = "publicacao-descricao";
 
-                        divButtons.className = "div-buttons"
-
-                        btnEditar.className = "publicacao-btn-editar"
-                        btnEditar.id = "btnEditar" + publicacao.idAviso;
-                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
-
-                        btnDeletar.className = "publicacao-btn-editar"
-                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
-
-                        divPublicacao.appendChild(spanID);
                         divPublicacao.appendChild(spanNome);
-                        divPublicacao.appendChild(spanTitulo);
+                        divPublicacao.appendChild(spanAvaliacao);
                         divPublicacao.appendChild(divDescricao);
-                        divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+
+        function atualizarFeed2() {
+        fetch("/avisos/listar_ima").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container_ima");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container_ima");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanAvaliacao = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+
+                        //spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        spanAvaliacao.innerHTML = "Avaliação: <b>" + publicacao.avaliacao + "</b>" + "<br>";
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>" + "<br>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>" + "<br>";
+
+                        divPublicacao.className = "publicacao";
+                        spanNome.className = "publicacao-nome";
+                        spanAvaliacao.className = "publicacao-Avaliacao";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanAvaliacao);
+                        divPublicacao.appendChild(divDescricao);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+
+    function atualizarFeed3() {
+        fetch("/avisos/listar_ham").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container_ham");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container_ham");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanAvaliacao = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+
+                        //spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        spanAvaliacao.innerHTML = "Avaliação: <b>" + publicacao.avaliacao + "</b>" + "<br>";
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>" + "<br>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>" + "<br>";
+
+                        divPublicacao.className = "publicacao";
+                        spanNome.className = "publicacao-nome";
+                        spanAvaliacao.className = "publicacao-Avaliacao";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanAvaliacao);
+                        divPublicacao.appendChild(divDescricao);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+
+    function atualizarFeed4() {
+        fetch("/avisos/listar_festivalTemaki").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container_festivalTemaki");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container_festivalTemaki");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanAvaliacao = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+
+                        //spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        spanAvaliacao.innerHTML = "Avaliação: <b>" + publicacao.avaliacao + "</b>" + "<br>";
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>" + "<br>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>" + "<br>";
+
+                        divPublicacao.className = "publicacao";
+                        spanNome.className = "publicacao-nome";
+                        spanAvaliacao.className = "publicacao-Avaliacao";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanAvaliacao);
+                        divPublicacao.appendChild(divDescricao);
                         feed.appendChild(divPublicacao);
                     }
 
@@ -486,11 +734,3 @@
     }
 
 </script>
-
-
-
-
-
-
-
-

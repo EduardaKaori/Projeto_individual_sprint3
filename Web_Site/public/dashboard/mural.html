@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -61,9 +61,9 @@
                 <div id="alerta">
                 </div>
                 <div class="container">
-                    <h1>Publicar um aviso</h1>
+                    <h1>publicar_halloweenVA um aviso</h1>
                     <div class="div-form">
-                        <form id="form_postagem" method="post" onsubmit="return publicar()">
+                        <form id="form_postagem" method="post" onsubmit="return publicar_halloweenVA()">
                             <label>
                                 Título:
                                 <br>
@@ -106,7 +106,7 @@
         document.getElementById("form_postagem").reset();
     }
 
-    function publicar() {
+    function publicar_halloweenVA() {
         var idUsuario = sessionStorage.ID_USUARIO;
 
         var corpo = {
@@ -114,7 +114,7 @@
             descricao: form_postagem.descricao.value
         }
 
-        fetch(`/avisos/publicar/${idUsuario}`, {
+        fetch(`/avisos/publicar_halloweenVA/${idUsuario}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -193,7 +193,7 @@
                         var publicacao = resposta[i];
 
                         // criando e manipulando elementos do HTML via JavaScript
-                        var divPublicacao = document.createElement("div");
+                        var divPublicacao = document.createElement("w");
                         var spanID = document.createElement("span");
                         var spanTitulo = document.createElement("span");
                         var spanNome = document.createElement("span");
@@ -247,4 +247,4 @@
         });
     }
 
-</script>
+</script> -->

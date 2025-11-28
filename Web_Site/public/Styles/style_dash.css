@@ -306,7 +306,7 @@ body {
     align-items: center;
     margin-bottom: 20px;
 }
-#select_avaliacao {
+.select_avaliacao {
     background-color: #f45d7b;
     font-size: 15px;
     color: #FFFFFF;
@@ -370,7 +370,7 @@ textarea {
     width: 100%;
 }
 
-#form_postagem button {
+#button_enviar {
   cursor: pointer;
   font-family: "Barlow", sans-serif;
   border: 0;
@@ -383,4 +383,43 @@ textarea {
   height: 30px;
   align-self: center;
   margin-top: 20px;
+}
+
+.publicacao {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.publicacao-nome {
+    color: #ED145B;
+    font-size: 20px;
+}
+.publicacao-Avaliacao {
+    color: #1d6c42;
+}       
+.publicacao-descricao {
+    color: #1d6c42;
+    font-size: 15px;
+    padding:  3px 0px ;
+}
+
+.usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.usuario img {
+    width: 50px;
+    border-color: #148937;
+}
+.usuario span {
+    font-size: bold;
+    color: #f45d7b;
+    font-family: "Bebas Neue", sans-serif ;
 }

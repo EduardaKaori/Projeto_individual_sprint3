@@ -5,11 +5,11 @@ function validarSessao() {
 
     var b_usuario = document.getElementById("b_usuario");
 
-    if (email != null && nome != null) {
-        b_usuario.innerHTML = nome;
-    } else {
-        window.location = "../login.html";
-    }
+   if (email != null && nome != null) {
+       b_usuario.innerHTML = nome;
+   } else {
+       window.location = "../login.html";
+   }
 }
 
 function limparSessao() {
@@ -24,8 +24,6 @@ function limparSessao() {
 // }
 
 function finalizarAguardar(texto) {
-    var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "none";
 
     var divErrosLogin = document.getElementById("div_erros_login");
     if (texto) {
