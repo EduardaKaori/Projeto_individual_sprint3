@@ -1,24 +1,24 @@
 // var alertas = [];
 
-// function obterdados(idAquario) {
-//     fetch(`/medidas/tempo-real/${idAquario}`)
-//         .then(resposta => {
-//             if (resposta.status == 200) {
-//                 resposta.json().then(resposta => {
+function obterdados(idHalloween) {
+    fetch(`/medidas/tempo-real/${idHalloween}`)
+        .then(resposta1 => {
+            if (resposta1.status == 200) {
+                resposta1.json().then(resposta1 => {
 
-//                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta1)}`);
 
-//                     alertar(resposta, idAquario);
-//                 });
-//             } else {
-//                 console.error(`Nenhum dado encontrado para o id ${idAquario} ou erro na API`);
-//             }
-//         })
-//         .catch(function (error) {
-//             console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
-//         });
+                    alertar(resposta1, idHalloween);
+                });
+            } else {
+                console.error(`Nenhum dado encontrado para o id ${idHalloween} ou erro na API`);
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+        });
 
-// }
+}
 
 // function alertar(resposta, idAquario) {
 //     var temp = resposta[0].temperatura;

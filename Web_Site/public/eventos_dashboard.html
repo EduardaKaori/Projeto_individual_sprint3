@@ -22,7 +22,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="atualizarFeed1(), atualizarFeed2(), atualizarFeed3(), atualizarFeed4(), validarSessao()">
+<body onload="validarSessao()">
     <div class="header_dash">
         <div class="container_dash">
             <div class="icone">
@@ -66,7 +66,7 @@
                         <span id="avaliacao">Avaliação</span>
                         <div class="porcentagem">
                             <img id="joia" src="assets/icon/joia-removebg-preview.png">
-                            <div id="porcem_halloween"><b id="porcentagem">--%</b></div>
+                            <div id="porcentagem"><b id="porcentagem_halloween"></b></div>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                         <span id="avaliacao">Avaliação</span>
                         <div class="porcentagem">
                             <img id="joia" src="assets/icon/joia-removebg-preview.png">
-                            <div id="porcem_halloween"><b id="porcentagem">70%</b></div>
+                            <div id="porcentagem"><b id="porcentagem_ima"></b></div>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         <span id="avaliacao">Avaliação</span>
                         <div class="porcentagem">
                             <img id="joia" src="assets/icon/joia-removebg-preview.png">
-                            <div id="porcem_halloween"><b id="porcentagem">--%</b></div>
+                            <div id="porcentagem"><b id="porcentagem_ham"></b></div>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                         <span id="avaliacao">Avaliação</span>
                         <div class="porcentagem">
                             <img id="joia" src="assets/icon/joia-removebg-preview.png">
-                            <div id="porcem_halloween"><b id="porcentagem">--%</b></div>
+                            <div id="porcentagem"><b id="porcentagem_festival"></b></div>
                         </div>
                     </div>
                 </div>
@@ -147,9 +147,9 @@
                         <div class="select-avaliacao">
                                 <select id="select_avaliacao_halloween" class="select_avaliacao">
                                     <option value="#">Avalie-nos</option>
-                                    <option value="Ótimo">Ótimo</option>
-                                    <option value="Bom">Bom</option>
-                                    <option value="Ruim">Ruim</option>
+                                    <option value="2">Ótimo</option>
+                                    <option value="1">Bom</option>
+                                    <option value="0">Ruim</option>
                                 </select>
                             </div>
                         </label>
@@ -196,9 +196,9 @@
                             <div class="select-avaliacao">
                                 <select id="select_avaliacao_ima" class="select_avaliacao">
                                     <option value="#">Avalie-nos</option>
-                                    <option value="Ótimo">Ótimo</option>
-                                    <option value="Bom">Bom</option>
-                                    <option value="Ruim">Ruim</option>
+                                    <option value="2">Ótimo</option>
+                                    <option value="1">Bom</option>
+                                    <option value="0">Ruim</option>
                                 </select>
                             </div>
                         </label>
@@ -243,9 +243,9 @@
                             <div class="select-avaliacao">
                                 <select id="select_avaliacao_ham" class="select_avaliacao">
                                     <option value="#">Avalie-nos</option>
-                                    <option value="Ótimo">Ótimo</option>
-                                    <option value="Bom">Bom</option>
-                                    <option value="Ruim">Ruim</option>
+                                    <option value="2">Ótimo</option>
+                                    <option value="1">Bom</option>
+                                    <option value="0">Ruim</option>
                                 </select>
                             </div>
                         </label>
@@ -290,9 +290,9 @@
                             <div class="select-avaliacao" class="select_avaliacao">
                                 <select id="select_avaliacao_festivalTemaki" class="select_avaliacao">
                                     <option value="#">Avalie-nos</option>
-                                    <option value="Ótimo">Ótimo</option>
-                                    <option value="Bom">Bom</option>
-                                    <option value="Ruim">Ruim</option>
+                                    <option value="2">Ótimo</option>
+                                    <option value="1">Bom</option>
+                                    <option value="0">Ruim</option>
                                 </select>
                             </div>
                         </label>
@@ -336,33 +336,194 @@
 
 </html>
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_xUSUARIO;
 
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    
+    window.onload = exibirGrafico();
 
-    const ctx = document.getElementById('grafico-ranking');
+    function exibirGrafico() {
+        obterDadosGrafico(1,2,3,4);
+        atualizarFeed1()
+        atualizarFeed2()
+        atualizarFeed3()
+        atualizarFeed4()
+    }
+        
+    var contHalloween = [];
+    var contIma = [];
+    var contHam = [];
+    var contFestival = [];
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function obterDadosGrafico(idHalloween, idIma, idHam, idFestival) {
+
+        let respostaFinal1 = ""
+        let respostaFinal2 = ""
+        let respostaFinal3 = ""
+        let respostaFinal4 = ""
+
+        fetch(`/medidas/ultimas/${idHalloween}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta1) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta1)}`);
+
+                    resposta1.reverse();
+
+                    respostaFinal1 = await resposta1;
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+        fetch(`/medidas/ultimas/${idIma}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta2) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta2)}`);
+
+                    resposta2.reverse();
+
+                    respostaFinal2 = await resposta2
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+        fetch(`/medidas/ultimas/${idHam}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta3) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta3)}`);
+
+                    resposta3.reverse();
+
+                    respostaFinal3 = await resposta3;
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+        
+        fetch(`/medidas/ultimas/${idFestival}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta4) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta4)}`);
+
+                    resposta4.reverse();
+
+                    respostaFinal4 = await resposta4;
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+        
+        setTimeout(() => plotarGrafico(respostaFinal1,respostaFinal2,respostaFinal3,respostaFinal4), 1000);
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta1, resposta2, resposta3, resposta4) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        var datas = []
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
             labels: ['Halloween VA', 'IMA', 'HAM', 'Festival Temaki'],
             datasets: [{
                 label: 'Quantidade de avaliações',
-                data: [10, 50, 40, 35],
+                data: datas,
                 borderWidth: 1,
                 borderColor: ['#7d0101', '#4d74ff', '#fac940', '#fac8e4'],
                 backgroundColor: ['#7d0101', '#4d74ff', '#fac940', '#fac8e4'],
             }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+        };
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta1.length; i++) {
+            var registro = resposta1[i];
+            console.log("Registro")
+            console.log(registro)
+            datas[0] = registro.soma;
+            contHalloween[0] = registro.quantidade;
         }
-    });
 
+        for (i = 0; i < resposta2.length; i++) {
+            var registro = resposta2[i];
+            datas[1] = registro.soma;
+            contIma[0] = registro.quantidade;
+        }
 
+        for (i = 0; i < resposta3.length; i++) {
+            var registro = resposta3[i];
+            datas[2] = registro.soma;
+            contHam[0] = registro.quantidade;
+        }
+
+        for (i = 0; i < resposta4.length; i++) {
+            var registro = resposta4[i];
+            datas[3] = registro.soma;
+            contFestival[0] = registro.quantidade;
+        }
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta1, resposta2, resposta3, resposta4)
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('datas:')
+        console.log(datas)
+        console.log(`contHalloween : ${contHalloween}`)
+        console.log(`contIma : ${contIma}`)
+        console.log(`contHam : ${contHam}`)
+        console.log(`contFestival : ${contFestival}`)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`grafico-ranking`),
+            config
+        );
+
+    }
 
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
@@ -564,6 +725,8 @@
                         divPublicacao.appendChild(spanAvaliacao);
                         divPublicacao.appendChild(divDescricao);
                         feed.appendChild(divPublicacao);
+
+                         
                     }
 
                     finalizarAguardar();
@@ -731,6 +894,12 @@
             console.error(resposta);
             finalizarAguardar();
         });
+
     }
+
+    porcentagem_halloween.innerHTML = `${contHalloween}%`;
+    porcentagem_ima.innerHTML = `${contIma}%`;
+    porcentagem_ham.innerHTML = `${contHam}%`;
+    porcentagem_festival.innerHTML = `${contFestival}%`;
 
 </script>

@@ -316,3 +316,348 @@
 
     }
 </script> -->
+
+
+
+
+
+
+<!--    // // O gráfico é construído com três funções:
+    // // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    // //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    // //     Para ajustar o "select", ajuste o comando sql em src/models
+    // function obterDadosGrafico(idHalloween, idIma, idHam, idFestival) {
+
+    //     if (proximaAtualizacao != undefined) {
+    //         clearTimeout(proximaAtualizacao);
+    //     }
+
+    //     fetch(`/medidas/ultimas/${idHalloween}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (resposta1) {
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta1)}`);
+
+    //                 resposta1.reverse();
+
+    //                 plotarGrafico(resposta1);
+
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+
+    //     fetch(`/medidas/ultimas/${idIma}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (resposta2) {
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta2)}`);
+
+    //                 resposta2.reverse();
+
+    //                 plotarGrafico(resposta2);
+
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+
+    //     fetch(`/medidas/ultimas/${idHam}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (resposta3) {
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta3)}`);
+
+    //                 resposta3.reverse();
+
+    //                 plotarGrafico(resposta3);
+
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+        
+    //     fetch(`/medidas/ultimas/${idFestival}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (resposta4) {
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta4)}`);
+
+    //                 resposta4.reverse();
+
+    //                 plotarGrafico(resposta4);
+
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+    // }
+
+    // // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    // function plotarGrafico(resposta1, resposta2, resposta3, resposta4) {
+
+    //     console.log('iniciando plotagem do gráfico...');
+
+    //     // Criando estrutura para plotar gráfico - labels
+    //     var data = []
+
+    //     // Criando estrutura para plotar gráfico - dados
+    //     let dados = {
+    //         labels: ['Halloween VA', 'IMA', 'HAM', 'Festival Temaki'],
+    //         datasets: [{
+    //             label: 'Quantidade de avaliações',
+    //             data: data,
+    //             borderWidth: 1,
+    //             borderColor: ['#7d0101', '#4d74ff', '#fac940', '#fac8e4'],
+    //             backgroundColor: ['#7d0101', '#4d74ff', '#fac940', '#fac8e4'],
+    //         }]
+    //     };
+
+    //     console.log('----------------------------------------------')
+    //     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    //     console.log(resposta1, resposta2, resposta3, resposta4)
+
+    //     // Inserindo valores recebidos em estrutura para plotar o gráfico
+    //     for (i = 0; i < resposta1.length; i++) {
+    //         var registro = resposta1[i];
+    //         data[0].push(registro.soma);
+    //         contHalloween[0].push(registro.quantidade);
+    //     }
+
+    //     for (i = 0; i < resposta2.length; i++) {
+    //         var registro = resposta2[i];
+    //         data[1].push(registro.soma);
+    //         contIma[0].push(registro.quantidade);
+    //     }
+
+    //     for (i = 0; i < resposta3.length; i++) {
+    //         var registro = resposta3[i];
+    //         data[2].push(registro.soma);
+    //         contHam[0].push(registro.quantidade);
+    //     }
+
+    //     for (i = 0; i < resposta4.length; i++) {
+    //         var registro = resposta4[i];
+    //         data[3].push(registro.soma);
+    //         contFestival[0].push(registro.quantidade);
+    //     }
+
+    //     console.log('----------------------------------------------')
+    //     console.log('O gráfico será plotado com os respectivos valores:')
+    //     console.log('data:')
+    //     console.log(data)
+    //     console.log(`contHalloween : ${contHalloween}`)
+    //     console.log(`contIma : ${contIma}`)
+    //     console.log(`contHam : ${contHam}`)
+    //     console.log(`contFestival : ${contFestival}`)
+    //     console.log('----------------------------------------------')
+
+    //     // Criando estrutura para plotar gráfico - config
+    //     const config = {
+    //         type: 'bar',
+    //         data: data,
+    //     };
+
+    //     // Adicionando gráfico criado em div na tela
+    //     let myChart = new Chart(
+    //         document.getElementById(`grafico-ranking`),
+    //         config
+    //     );
+
+    //     setTimeout(() => atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart), 2000);
+    // }
+
+
+    // // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // // buscando a última medida inserida em tabela contendo as capturas, 
+
+    // //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    // //     Para ajustar o "select", ajuste o comando sql em src/models
+    // function atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart) {
+
+    //     fetch(`/medidas/tempo-real/${idHalloween}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (novoRegistro) {
+
+    //                 obterdados(idHalloween);
+    //                 // alertar(novoRegistro, idHalloween);
+    //                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+    //                 console.log(`Dados atuais do gráfico:`);
+    //                 console.log(data);
+
+    //                 if (novoRegistro[0].soma == data[data.length - 1]) {
+    //                     console.log("---------------------------------------------------------------")
+    //                     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+    //                     console.log(novoRegistro[0].soma)
+    //                     console.log("Horário do último dado capturado:")
+    //                     console.log(data[data.length - 1])
+    //                     console.log("---------------------------------------------------------------")
+    //                 } else {
+    //                     // tirando e colocando valores no gráfico
+    //                     data.shift(); // apagar o primeiro
+    //                     data[0].push(novoRegistro.soma); // incluir um novo momento
+
+    //                     contHalloween[0].shift();  // apagar o primeiro de umidade
+    //                     contHalloween[0].push(novoRegistro.quantidade); // incluir uma nova medida de umidade
+    //                     myChart.update();
+    //                 }
+
+    //                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart), 2000);
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //             proximaAtualizacao = setTimeout(() => atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart), 2000);
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+
+    // fetch(`/medidas/tempo-real/${idIma}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (novoRegistro) {
+
+    //                 obterdados(idIma);
+    //                 // alertar(novoRegistro, idIma);
+    //                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+    //                 console.log(`Dados atuais do gráfico:`);
+    //                 console.log(data);
+
+    //                 if (novoRegistro[0].soma == data[data.length - 1]) {
+    //                     console.log("---------------------------------------------------------------")
+    //                     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+    //                     console.log(novoRegistro[1].soma)
+    //                     console.log("Horário do último dado capturado:")
+    //                     console.log(data[data.length - 1])
+    //                     console.log("---------------------------------------------------------------")
+    //                 } else {
+    //                     // tirando e colocando valores no gráfico
+    //                     data.shift(); // apagar o primeiro
+    //                     data[1].push(novoRegistro.soma); // incluir um novo momento
+
+    //                     contIma[0].shift();  // apagar o primeiro de umidade
+    //                     contIma[0].push(novoRegistro.quantidade); // incluir uma nova medida de umidade
+    //                     myChart.update();
+    //                 }
+
+    //                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart), 2000);
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //             proximaAtualizacao = setTimeout(() => atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart), 2000);
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+
+    // fetch(`/medidas/tempo-real/${idHam}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (novoRegistro) {
+
+    //                 obterdados(idHam);
+    //                 // alertar(novoRegistro, idHam);
+    //                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+    //                 console.log(`Dados atuais do gráfico:`);
+    //                 console.log(data);
+
+    //                 if (novoRegistro[0].soma == data[data.length - 1]) {
+    //                     console.log("---------------------------------------------------------------")
+    //                     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+    //                     console.log(novoRegistro[0].soma)
+    //                     console.log("Horário do último dado capturado:")
+    //                     console.log(data[data.length - 1])
+    //                     console.log("---------------------------------------------------------------")
+    //                 } else {
+    //                     // tirando e colocando valores no gráfico
+    //                     data.shift(); // apagar o primeiro
+    //                     data[2].push(novoRegistro.soma); // incluir um novo momento
+
+    //                     contHam[0].shift();  // apagar o primeiro de umidade
+    //                     contHam[0].push(novoRegistro.quantidade); // incluir uma nova medida de umidade
+    //                     myChart.update();
+    //                 }
+
+    //                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart), 2000);
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //             proximaAtualizacao = setTimeout(() => atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart), 2000);
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+
+    // fetch(`/medidas/tempo-real/${idFestival}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (novoRegistro) {
+
+    //                 obterdados(idFestival);
+    //                 // alertar(novoRegistro, idFestival);
+    //                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+    //                 console.log(`Dados atuais do gráfico:`);
+    //                 console.log(data);
+
+    //                 if (novoRegistro[0].soma == data[data.length - 1]) {
+    //                     console.log("---------------------------------------------------------------")
+    //                     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+    //                     console.log(novoRegistro[0].soma)
+    //                     console.log("Horário do último dado capturado:")
+    //                     console.log(data[data.length - 1])
+    //                     console.log("---------------------------------------------------------------")
+    //                 } else {
+    //                     // tirando e colocando valores no gráfico
+    //                     data.shift(); // apagar o primeiro
+    //                     data[3].push(novoRegistro.soma); // incluir um novo momento
+
+    //                     contFestival[0].shift();  // apagar o primeiro de umidade
+    //                     contFestival[0].push(novoRegistro.quantidade); // incluir uma nova medida de umidade
+    //                     myChart.update();
+    //                 }
+
+    //                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart), 2000);
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //             proximaAtualizacao = setTimeout(() => atualizarGrafico(idHalloween, idIma, idHam, idFestival, data, myChart), 2000);
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+
+    // }
+
+
+
+-->

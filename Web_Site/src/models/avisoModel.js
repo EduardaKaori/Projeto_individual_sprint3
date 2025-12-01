@@ -2,10 +2,14 @@ var database = require("../database/config");
 
 function listar_halloween() {
    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-   var instrucaoSql = `
-       SELECT 
+   var instrucaoSql = `       
+   SELECT 
     a.idAvaliacao,
-    a.avaliacao,
+    CASE 
+WHEN a.avaliacao = 2 THEN 'Ótimo'
+WHEN a.avaliacao = 1 THEN 'Bom'
+WHEN a.avaliacao = 0 THEN 'Ruim'
+END as 'avaliacao',
     a.descricao,
     a.dtEnvioHora,
     a.fkUsuario,
@@ -20,6 +24,7 @@ FROM
         JOIN
     evento AS e ON e.idEvento = a.fkEvento
 		WHERE a.fkEvento = 1;
+
    `;
    console.log("Executando a instrução SQL: \n" + instrucaoSql);
    return database.executar(instrucaoSql);
@@ -30,7 +35,11 @@ function listar_ima() {
    var instrucaoSql = `
        SELECT 
     a.idAvaliacao,
-    a.avaliacao,
+    CASE 
+WHEN a.avaliacao = 2 THEN 'Ótimo'
+WHEN a.avaliacao = 1 THEN 'Bom'
+WHEN a.avaliacao = 0 THEN 'Ruim'
+END as 'avaliacao',
     a.descricao,
     a.dtEnvioHora,
     a.fkUsuario,
@@ -45,6 +54,7 @@ FROM
         JOIN
     evento AS e ON e.idEvento = a.fkEvento
 		WHERE a.fkEvento = 2;
+
    `;
    console.log("Executando a instrução SQL: \n" + instrucaoSql);
    return database.executar(instrucaoSql);
@@ -55,7 +65,11 @@ function listar_ham() {
    var instrucaoSql = `
        SELECT 
     a.idAvaliacao,
-    a.avaliacao,
+    CASE 
+WHEN a.avaliacao = 2 THEN 'Ótimo'
+WHEN a.avaliacao = 1 THEN 'Bom'
+WHEN a.avaliacao = 0 THEN 'Ruim'
+END as 'avaliacao',
     a.descricao,
     a.dtEnvioHora,
     a.fkUsuario,
@@ -70,6 +84,7 @@ FROM
         JOIN
     evento AS e ON e.idEvento = a.fkEvento
 		WHERE a.fkEvento = 3;
+
    `;
    console.log("Executando a instrução SQL: \n" + instrucaoSql);
    return database.executar(instrucaoSql);
@@ -78,9 +93,13 @@ FROM
 function listar_festivalTemaki() {
    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
    var instrucaoSql = `
-       SELECT 
+        SELECT 
     a.idAvaliacao,
-    a.avaliacao,
+    CASE 
+WHEN a.avaliacao = 2 THEN 'Ótimo'
+WHEN a.avaliacao = 1 THEN 'Bom'
+WHEN a.avaliacao = 0 THEN 'Ruim'
+END as 'avaliacao',
     a.descricao,
     a.dtEnvioHora,
     a.fkUsuario,
@@ -95,6 +114,7 @@ FROM
         JOIN
     evento AS e ON e.idEvento = a.fkEvento
 		WHERE a.fkEvento = 4;
+
    `;
    console.log("Executando a instrução SQL: \n" + instrucaoSql);
    return database.executar(instrucaoSql);
