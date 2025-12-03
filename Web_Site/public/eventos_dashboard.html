@@ -114,16 +114,16 @@
             <div class="box-dash">
                 <div class="box-kpi">
                     <b>Evento com mais comentários</b>
-                    <div id="kpi_comentarios"><b>--</b></div>
+                    <div id="kpi_comentarios"><b id="kpi_coment">--</b></div>
                 </div>
                 <div class="box-kpi">
-                    <b>Quantidade de avaliações</b>
-                    <div id="kpi_qtd_avaliacoes"><b>--</b></div>
+                    <b>Total de comentários</b>
+                    <div id="kpi_qtd_avaliacoes"><b id="kpi_qtd">--</b></div>
                 </div>
             </div>
             <div class="box-dash">
                 <div class="box-ranking">
-                    <b id="ranking">Ranking de eventos <br> mais bem avaliados</b>
+                    <b id="ranking">Ranking de eventos <br>com mais comentários</b>
                     <canvas id="grafico-ranking"></canvas>
                 </div>
             </div>
@@ -338,21 +338,44 @@
 <script>
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    
+
     window.onload = exibirGrafico();
 
     function exibirGrafico() {
         obterDadosGrafico(1,2,3,4);
-        atualizarFeed1()
-        atualizarFeed2()
-        atualizarFeed3()
-        atualizarFeed4()
+        atualizarFeed1();
+        atualizarFeed2();
+        atualizarFeed3();
+        atualizarFeed4();
+        exibirkpi();
     }
-        
+
+    function exibirkpi(){
+        exibirKPIsHalloween();
+        exibirKPIsIma();
+        exibirKPIsHam();
+        exibirKPIsFestival();
+    }
+
+    var datas = [];
     var contHalloween = [];
     var contIma = [];
     var contHam = [];
     var contFestival = [];
+
+    var qtdComentarioHalloween = 0;
+    var qtdComentarioIma = 0;
+    var qtdComentarioHam = 0;
+    var qtdComentarioFestival = 0;
+    
+    var porcemHalloween = 0;
+    var porcemIma = 0;
+    var porcemHam = 0;
+    var porcemFestival = 0;
+
+    var totalComentario = 0;
+
+    var qtdMaior = 0;
 
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -380,7 +403,7 @@
                     resposta1.reverse();
 
                     respostaFinal1 = await resposta1;
-
+                
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -397,7 +420,7 @@
 
                     resposta2.reverse();
 
-                    respostaFinal2 = await resposta2
+                    respostaFinal2 = await resposta2;
 
                 });
             } else {
@@ -454,10 +477,7 @@
     function plotarGrafico(resposta1, resposta2, resposta3, resposta4) {
 
         console.log('iniciando plotagem do gráfico...');
-
-        // Criando estrutura para plotar gráfico - labels
-        var datas = []
-
+    
         // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: ['Halloween VA', 'IMA', 'HAM', 'Festival Temaki'],
@@ -472,28 +492,28 @@
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta1.length; i++) {
-            var registro = resposta1[i];
-            console.log("Registro")
-            console.log(registro)
-            datas[0] = registro.soma;
+            var registro = resposta1[i]; 
+            datas[0] = registro.quantidade; 
+
+            // porcentagem_halloween.innerHTML = `${registro.soma}%`;
             contHalloween[0] = registro.quantidade;
         }
 
         for (i = 0; i < resposta2.length; i++) {
             var registro = resposta2[i];
-            datas[1] = registro.soma;
+            datas[1] = registro.quantidade;
             contIma[0] = registro.quantidade;
         }
 
         for (i = 0; i < resposta3.length; i++) {
             var registro = resposta3[i];
-            datas[2] = registro.soma;
+            datas[2] = registro.quantidade;
             contHam[0] = registro.quantidade;
         }
 
         for (i = 0; i < resposta4.length; i++) {
             var registro = resposta4[i];
-            datas[3] = registro.soma;
+            datas[3] = registro.quantidade;
             contFestival[0] = registro.quantidade;
         }
 
@@ -646,7 +666,7 @@
 
     }
 
-      function publicar_festivalTemaki() {
+    function publicar_festivalTemaki() {
         var idUsuario = sessionStorage.ID_USUARIO;
         var avaliacao_select = select_avaliacao_festivalTemaki.value;
         var descricao_comentario = textarea_descricao_festivalTemaki.value;
@@ -705,6 +725,9 @@
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
+                        qtdComentarioHalloween++;
+                        totalComentario++;
+
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
                         var spanAvaliacao = document.createElement("span");
@@ -740,7 +763,7 @@
         });
     }
 
-        function atualizarFeed2() {
+    function atualizarFeed2() {
         fetch("/avisos/listar_ima").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
@@ -758,6 +781,9 @@
                     feed.innerHTML = "";
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
+
+                        qtdComentarioIma++;
+                        totalComentario++;
 
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
@@ -811,6 +837,9 @@
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
+                        qtdComentarioHam++;
+                        totalComentario++;
+
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
                         var spanAvaliacao = document.createElement("span");
@@ -863,6 +892,9 @@
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
+                        qtdComentarioFestival++;
+                        totalComentario++;
+
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
                         var spanAvaliacao = document.createElement("span");
@@ -897,9 +929,173 @@
 
     }
 
-    porcentagem_halloween.innerHTML = `${contHalloween}%`;
-    porcentagem_ima.innerHTML = `${contIma}%`;
-    porcentagem_ham.innerHTML = `${contHam}%`;
-    porcentagem_festival.innerHTML = `${contFestival}%`;
+    function exibirKPIsHalloween() {
+        fetch("/kpi/exibirKPIsHalloween").then(function (resposta1) {
+            if (resposta1.ok) {
+                if (resposta1.status == 204) {
+                    var feed = document.getElementById("porcentagem_halloween");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "0%"
+                    feed.appendChild(mensagem);
+                    throw "0%";
+                }
 
+                resposta1.json().then(function (resposta1) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta1));
+
+                    var feed = document.getElementById("porcentagem_halloween");
+                    feed.innerHTML = "";
+                        var publicacao = resposta1[0];
+
+                        var otimo = publicacao.quantidade;
+
+                        porcemHalloween = otimo * 100 / qtdComentarioHalloween;
+
+                        feed.innerHTML += `${Math.floor(porcemHalloween)}%`;
+                        // feed.innerHTML += `${porcemHalloween.toFixed(0)}%`;
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta1) {
+            console.error(resposta1);
+            finalizarAguardar();
+        });
+
+    }
+
+    function exibirKPIsIma() {
+        fetch("/kpi/exibirKPIsIma").then(function (resposta2) {
+            if (resposta2.ok) {
+                if (resposta2.status == 204) {
+                    var feed = document.getElementById("porcentagem_ima");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "0%"
+                    feed.appendChild(mensagem);
+                    throw "0%";
+                }
+
+                resposta2.json().then(function (resposta2) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta2));
+
+                    var feed = document.getElementById("porcentagem_ima");
+                    feed.innerHTML = "";
+                        var publicacao = resposta2[0];
+
+                        var otimo = publicacao.quantidade;
+
+                        porcemIma = otimo * 100 / qtdComentarioIma;
+
+                        feed.innerHTML += `${Math.floor(porcemIma)}%`;
+                        // feed.innerHTML += `${porcemIma.toFixed(0)}%`;
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta2) {
+            console.error(resposta2);
+            finalizarAguardar();
+        });
+
+    }
+
+    function exibirKPIsHam() {
+        fetch("/kpi/exibirKPIsHam").then(function (resposta3) {
+            if (resposta3.ok) {
+                if (resposta3.status == 204) {
+                    var feed = document.getElementById("porcentagem_ham");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "0%"
+                    feed.appendChild(mensagem);
+                    throw "0%";
+                }
+
+                resposta3.json().then(function (resposta3) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta3));
+
+                    var feed = document.getElementById("porcentagem_ham");
+                    feed.innerHTML = "";
+                        var publicacao = resposta3[0];
+
+                        var otimo = publicacao.quantidade;
+
+                        porcemHam = otimo * 100 / qtdComentarioHam;
+
+                        feed.innerHTML += `${Math.floor(porcemHam)}%`;
+                        // feed.innerHTML += `${porcemHam.toFixed(0)}%`;
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta3) {
+            console.error(resposta3);
+            finalizarAguardar();
+        });
+
+    }
+
+    function exibirKPIsFestival() {
+        fetch("/kpi/exibirKPIsFestival").then(function (resposta4) {
+            if (resposta4.ok) {
+                if (resposta4.status == 204) {
+                    var feed = document.getElementById("porcentagem_festival");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "0%"   
+                    feed.appendChild(mensagem);
+                    throw "0%";
+                }
+
+                resposta4.json().then(function (resposta4) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta4));
+
+                    var feed = document.getElementById("porcentagem_festival");
+                    feed.innerHTML = "";
+                        var publicacao = resposta4[0];
+
+                        var otimo = publicacao.quantidade;
+
+                        porcemFestival = otimo * 100 / qtdComentarioFestival;
+
+                        feed.innerHTML += `${Math.floor(porcemFestival)}%`;
+                        // feed.innerHTML += `${porcemFestival.toFixed(0)}%`;
+
+                        kpi_qtd.innerHTML = `${totalComentario}`;
+                    
+
+                        qtdMaior = qtdComentarioHalloween;
+                        var nome = "";
+                        nome = 'Halloweem VA';
+
+                        if(qtdMaior < qtdComentarioIma){
+                            qtdMaior = qtdComentarioIma;
+                            nome = 'IMA';
+                        } else if (qtdMaior < qtdComentarioHam) {
+                            qtdMaior = qtdComentarioHam;
+                            nome = 'HAM';
+                        } else if (qtdComentarioFestival > qtdMaior) {
+                            qtdMaior = idFestival;
+                            nome = 'Festival Temaki';
+                        }
+                    
+                        kpi_coment.innerHTML = `${nome}`;
+
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta4) {
+            console.error(resposta4);
+            finalizarAguardar();
+        });
+
+    }
+    
 </script>

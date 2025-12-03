@@ -16,4 +16,5 @@ router.get("/ultimas/:idFestival", function (req, res) {
     medidaController.buscarUltimasMedidasFestival(req, res);
 });
 
+
 module.exports = router;
