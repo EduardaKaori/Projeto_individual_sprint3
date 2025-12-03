@@ -1,62 +1,38 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
-);
+CREATE DATABASE projeto_individual;
+USE projeto_individual;
 
 CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+idUsuario INT PRIMARY KEY AUTO_INCREMENT, 
+nome VARCHAR(45), 
+email VARCHAR(150),
+senha VARCHAR(20)
+)AUTO_INCREMENT = 1000;
+
+CREATE TABLE evento (
+idEvento INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45),
+descricao VARCHAR(200), 
+dtEvento  DATE
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+CREATE TABLE avaliacao (
+idAvaliacao INT auto_increment, 
+fkUsuario INT,
+fkEvento INT, 
+avaliacao VARCHAR(45), 
+descricao VARCHAR(250),
+dtEnvioHora DATETIME DEFAULT current_timestamp,
+	CONSTRAINT fkAvaliacaoEvento
+		FOREIGN KEY (fkEvento)
+			REFERENCES evento(idEvento),
+CONSTRAINT fkAvaliacaoUsuario 
+	FOREIGN KEY (fkUsuario)
+		REFERENCES usuario(idUsuario),
+CONSTRAINT pkComposta 
+	PRIMARY KEY (idAvaliacao, fkUsuario, fkEvento)
 );
-
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
-
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+insert into evento (nome, descricao, dtEvento) VALUES
+	('Halloween VA', 'Halloween VA - é um evento que organizamos para os seinens se divertirem na época de halloween, a festas mais horripilante que existe!', '2025-10-26'),
+    ('IMA', 'IMA é um evento de integração novo do seinen Vila Alpina, que tem como objetivo incentivar os jovens a se divertirem e criarem laços de amizade.', '2026-04-17'),
+    ('HAM', 'HAM é um evento onde você e seu amigo pode ir para comer alguns hamburgueres e se divertir jogando jogos de tabuleiro, que são disponibilizados no local ', '2025-03-30'),
+    ('Festival do Temaki', 'Quer comer um delicioso temaki enquanto se diverte vendo apresentações da cultura de Okinawa e jogando bingo com prêmios inéditos? Venha para o Festival do Temaki II', '2025-09-14');
